@@ -1,4 +1,4 @@
-# uncontrollable-input [![Build Status](https://travis-ci.org/JsCommunity/react-uncontrollable-input.png?branch=master)](https://travis-ci.org/JsCommunity/react-uncontrollable-input)
+# uncontrollable-input [![Build Status](https://travis-ci.org/JsCommunity/uncontrollable-input.png?branch=master)](https://travis-ci.org/JsCommunity/uncontrollable-input)
 
 > Simplify the creation of controlled/uncontrolled React inputs
 
