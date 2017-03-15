@@ -1,5 +1,7 @@
 # uncontrollable-input [![Build Status](https://travis-ci.org/JsCommunity/react-uncontrollable-input.png?branch=master)](https://travis-ci.org/JsCommunity/react-uncontrollable-input)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/JsCommunity/react-auto-controlled-input.svg)](https://greenkeeper.io/)
+
 > Simplify the creation of controlled/uncontrolled React inputs
 
 
