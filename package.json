@@ -1,0 +1,112 @@
+{
+  "name": "uncontrollable-input",
+  "version": "0.0.0",
+  "license": "ISC",
+  "description": "Wrapper to easilly create strong controllable/uncontrollable inputs",
+  "keywords": [
+    "controllable",
+    "controlled",
+    "input",
+    "inputs",
+    "react",
+    "uncontrollable",
+    "uncontrolled"
+  ],
+  "homepage": "https://github.com/JsCommunity/uncontrollable-input",
+  "bugs": "https://github.com/JsCommunity/uncontrollable-input/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JsCommunity/uncontrollable-input.git"
+  },
+  "author": {
+    "name": "Julien Fontanet",
+    "email": "julien.fontanet@isonoe.net"
+  },
+  "preferGlobal": false,
+  "main": "dist/",
+  "bin": {},
+  "files": [
+    "dist/"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-dev": "^1.0.0",
+    "babel-plugin-lodash": "^3.2.11",
+    "babel-preset-env": "^1.2.1",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-3": "^6.22.0",
+    "browserify": "^14.1.0",
+    "cross-env": "^3.2.4",
+    "dependency-check": "^2.8.0",
+    "enzyme": "^2.7.1",
+    "husky": "^0.13.2",
+    "jest": "^19.0.2",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "rimraf": "^2.6.1",
+    "standard": "^9.0.1",
+    "uglify-js": "^2.8.12"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production babel --source-maps --out-dir=dist/ src/",
+    "commitmsg": "npm test",
+    "dev": "cross-env NODE_ENV=development babel --watch --source-maps --out-dir=dist/ src/",
+    "dev-test": "jest --bail --watch",
+    "postbuild": "browserify -x react -s uncontrolledInput dist/index.js | uglifyjs -c > dist/umd.js",
+    "posttest": "standard && dependency-check ./package.json",
+    "prebuild": "rimraf dist/",
+    "predev": "npm run prebuild",
+    "prepublish": "npm run build",
+    "test": "jest"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "ignore": null
+      }
+    },
+    "ignore": "*.spec.js",
+    "plugins": [
+      "dev",
+      "lodash"
+    ],
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browser": "> 5%",
+            "node": 4,
+            "uglify": true
+          }
+        }
+      ],
+      "react",
+      "stage-3"
+    ]
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "testRegex": "\\.spec\\.js$"
+  },
+  "standard": {
+    "global": [
+      "__DEV__"
+    ],
+    "ignore": [
+      "dist"
+    ],
+    "parser": "babel-eslint"
+  },
+  "peerDependencies": {
+    "react": "^15.4.2"
+  }
+}
