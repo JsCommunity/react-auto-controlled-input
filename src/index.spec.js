@@ -38,6 +38,12 @@ describe('uncontrollableInput()', () => {
     expect(receivedProps.value).toEqual('bar')
   })
 
+  it('falsy default value is correctly supported', () => {
+    mount(<MyInput defaultValue='' />).getNode()
+
+    expect(receivedProps.value).toEqual('')
+  })
+
   it('throws if both defaultValue and value are present', () => {
     expect(() =>
       shallow(<MyInput defaultValue='foo' value='bar' />)

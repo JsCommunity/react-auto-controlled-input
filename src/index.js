@@ -26,9 +26,8 @@ export default options => ControlledInput => {
       const opts = typeof options === 'function' ? options(props) : options
       const controlled = this._controlled = 'value' in props
       if (!controlled) {
-        this.state = {
-          value: props.defaultValue || (opts && opts.defaultValue)
-        }
+        const { defaultValue = opts && opts.defaultValue } = props
+        this.state = { value: defaultValue }
 
         this._onChange = event => {
           let defaultPrevented = false
