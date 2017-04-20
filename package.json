@@ -1,6 +1,6 @@
 {
   "name": "uncontrollable-input",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "ISC",
   "description": "Wrapper to easilly create strong controllable/uncontrollable inputs",
   "keywords": [
