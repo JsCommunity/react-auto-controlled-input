@@ -4,7 +4,7 @@ import { createElement, PureComponent } from 'react'
 // otherwise returns the param.
 const getEventValue = event => {
   let target
-  if (!event || !(target = event.target)) {
+  if (event == null || (target = event.target) == null) {
     return event
   }
 
@@ -33,7 +33,7 @@ export default options => ControlledInput => {
           let defaultPrevented = false
 
           const { onChange } = this.props
-          if (onChange) {
+          if (onChange !== undefined) {
             onChange(event)
             defaultPrevented = event && event.defaultPrevented
           }
