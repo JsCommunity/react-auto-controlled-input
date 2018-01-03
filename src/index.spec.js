@@ -16,21 +16,21 @@ describe('uncontrollableInput()', () => {
   })
 
   it('can be used in controlled mode', () => {
-    const node = mount(<MyInput value='foo' />).getNode()
+    const node = mount(<MyInput value='foo' />).instance()
 
     expect(node._controlled).toBe(true)
     expect(receivedProps).toEqual({ value: 'foo' })
   })
 
   it('accepts undefined in controlled mode', () => {
-    const node = mount(<MyInput value={undefined} />).getNode()
+    const node = mount(<MyInput value={undefined} />).instance()
 
     expect(node._controlled).toBe(true)
     expect(receivedProps.value).toBe(undefined)
   })
 
   it('can be used in uncontrolled mode', () => {
-    const node = mount(<MyInput defaultValue='foo' />).getNode()
+    const node = mount(<MyInput defaultValue='foo' />).instance()
 
     expect(node._controlled).toBe(false)
     expect(receivedProps.value).toEqual('foo')
@@ -39,7 +39,7 @@ describe('uncontrollableInput()', () => {
   })
 
   it('falsy default value is correctly supported', () => {
-    mount(<MyInput defaultValue='' />).getNode()
+    mount(<MyInput defaultValue='' />).instance()
 
     expect(receivedProps.value).toEqual('')
   })
@@ -84,18 +84,18 @@ describe('uncontrollableInput()', () => {
   describe('#get value()', () => {
     it('returns the current value', () => {
       expect(
-        mount(<MyInput defaultValue='foo' />).getNode().value
+        mount(<MyInput defaultValue='foo' />).instance().value
       ).toBe('foo')
 
       expect(
-        mount(<MyInput value='foo' />).getNode().value
+        mount(<MyInput value='foo' />).instance().value
       ).toBe('foo')
     })
   })
 
   describe('#set value()', () => {
     it('updates the value in uncontrolled mode', () => {
-      const node = mount(<MyInput defaultValue='foo' />).getNode()
+      const node = mount(<MyInput defaultValue='foo' />).instance()
 
       node.value = 'bar'
       expect(node.value).toBe('bar')
@@ -104,7 +104,7 @@ describe('uncontrollableInput()', () => {
     })
 
     it('throws in controlled mode', () => {
-      const node = mount(<MyInput value='foo' />).getNode()
+      const node = mount(<MyInput value='foo' />).instance()
 
       expect(() => {
         node.value = 'bar'
