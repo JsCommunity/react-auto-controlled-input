@@ -107,6 +107,6 @@
     "parser": "babel-eslint"
   },
   "peerDependencies": {
-    "react": "^15.4.2"
+    "react": ">=15.4.2"
   }
 }
