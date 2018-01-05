@@ -16,6 +16,8 @@ const getEventValue = event => {
     : target.value
 }
 
+const noop = () => {}
+
 // This decorator can be used on a controlled input component to make
 // it able to automatically handled the uncontrolled mode.
 export default options => ControlledInput => {
@@ -30,15 +32,9 @@ export default options => ControlledInput => {
         this.state = { value: defaultValue }
 
         this._onChange = event => {
-          let defaultPrevented = false
+          this.props.onChange(event)
 
-          const { onChange } = this.props
-          if (onChange !== undefined) {
-            onChange(event)
-            defaultPrevented = event && event.defaultPrevented
-          }
-
-          if (!defaultPrevented) {
+          if (event == null || !event.defaultPrevented) {
             this.setState({ value: getEventValue(event) })
           }
         }
@@ -96,6 +92,10 @@ export default options => ControlledInput => {
         throw new Error(`${name}: default value should not change`)
       }
     }
+  }
+
+  UncontrollableInput.defaultProps = {
+    onChange: noop
   }
 
   return UncontrollableInput

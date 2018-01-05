@@ -19,7 +19,10 @@ describe('uncontrollableInput()', () => {
     const node = mount(<MyInput value='foo' />).instance()
 
     expect(node._controlled).toBe(true)
-    expect(receivedProps).toEqual({ value: 'foo' })
+    expect(receivedProps).toEqual({
+      onChange: MyInput.defaultProps.onChange,
+      value: 'foo'
+    })
   })
 
   it('accepts undefined in controlled mode', () => {
